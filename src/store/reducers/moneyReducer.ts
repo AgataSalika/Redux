@@ -1,6 +1,7 @@
-import { plus, minus } from "../actions/moneyActions.ts";
+import { type MoneyAction } from "../actions/moneyActions.ts";
 
-interface initialType {
+
+export interface initialType {
   cash: number;
   name: string;
 }
@@ -12,9 +13,9 @@ const initialState: initialType = {
 
 //reducer это какая то функция, которая принимает текущее состояние и действие (action) и возвращает новое СОСТОЯНИЕ
 
-export const moneyReducer = (state = initialState, action): initialType => {
+export const moneyReducer = (state = initialState, action:MoneyAction): initialType => {
   switch (action.type) {
-    case "money/plus":
+    case 'money/plus':
       return { ...state, cash: state.cash + action.payload };
     case "money/minus":
       return { ...state, cash: state.cash - action.payload };
